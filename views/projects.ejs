@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects & Certifications</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <h3>Projects & Experience</h3>
+
+    <div class="project-container">
+
+        <% if (projects && projects.length > 0) { %>
+
+            <% projects.forEach(function(project) { %>
+
+                <div class="project-card">
+
+                    <h4>
+                        <u><b><%= project.name %></b></u>
+                    </h4>
+
+                    <b>
+                        <u><%= project.technologies %></u>
+                    </b>
+
+                    <p><%= project.description %></p>
+
+                    <% if (project.github) { %>
+                        <a
+                            href="<%= project.github %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Project
+                        </a>
+                    <% } %>
+
+                </div>
+
+            <% }); %>
+
+        <% } else { %>
+
+            <p>No projects found in the database.</p>
+
+        <% } %>
+
+    </div>
+
+    <h3>Certifications & Trainings</h3>
+
+    <div class="certificate-container">
+
+        <% if (certificates && certificates.length > 0) { %>
+
+            <% certificates.forEach(function(certificate) { %>
+
+                <div class="certificate-card">
+
+                    <h4>
+                        <u><%= certificate.name %></u>
+                    </h4>
+
+                    <u><%= certificate.organization %></u>
+
+                    <p>
+                        <%= certificate.description %>
+                    </p>
+
+                    <% if (certificate.image) { %>
+
+                        <a
+                            href="/images/<%= encodeURIComponent(certificate.image) %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Certificate
+                        </a>
+
+                    <% } %>
+
+                </div>
+
+            <% }); %>
+
+        <% } else { %>
+
+            <p>No certificates found in the database.</p>
+
+        <% } %>
+
+    </div>
+
+    <footer>
+        © 2026 Sahad
+    </footer>
+
+</body>
+</html>
